@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Transaction } from "@prisma/client";
 
 import { TransactionTypeBadge } from "../_components/type-badge";
+import { Button } from "@/app/_components/ui/button";
+import { PencilIcon, TrashIcon } from "lucide-react";
 
 export const TRANSACTION_CATEGORY_LABELS = {
   EDUCATION: "Educação",
@@ -56,9 +58,9 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
     header: "Data",
     cell: ({ row: { original: transaction } }) => {
       const date = new Date(transaction.date).toLocaleDateString("pt-BR", {
-        year: "numeric",
-        month: "long",
         day: "2-digit",
+        month: "long",
+        year: "numeric",
       });
 
       return date;
@@ -67,9 +69,29 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "amount",
     header: "Valor",
+    cell: ({ row: { original: transaction } }) => {
+      const amount = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      }).format(Number(transaction.amount));
+      return amount;
+    },
   },
   {
     accessorKey: "actions",
     header: "",
+    cell: () => {
+      return (
+        <div className="space-x-1">
+          <Button variant={"ghost"} size={"icon"}>
+            <TrashIcon className="text-muted-foreground" />
+          </Button>
+
+          <Button variant={"ghost"} size={"icon"}>
+            <PencilIcon className="text-muted-foreground" />
+          </Button>
+        </div>
+      );
+    },
   },
 ];
