@@ -74,6 +74,7 @@ export const TransactionColumns: ColumnDef<Transaction>[] = [
         style: "currency",
         currency: "BRL",
       }).format(Number(transaction.amount));
+
       return amount;
     },
   },
