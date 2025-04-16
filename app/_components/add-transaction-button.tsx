@@ -37,6 +37,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { TRANSACTION_TYPE_OPTIONS } from "../_constants/transactions";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -139,11 +140,11 @@ const AddTransactionButton = () => {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="expense">Despesa</SelectItem>
-                      <SelectItem value="m@google.com">m@google.com</SelectItem>
-                      <SelectItem value="m@support.com">
-                        m@support.com
-                      </SelectItem>
+                      {TRANSACTION_TYPE_OPTIONS.map((option) => (
+                        <SelectItem key={option.value} value={option.value}>
+                          {option.label}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <FormMessage />
