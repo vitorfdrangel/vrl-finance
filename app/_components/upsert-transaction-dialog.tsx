@@ -40,7 +40,7 @@ import {
   TRANSACTION_TYPE_OPTIONS,
 } from "../_constants/transactions";
 import { DatePicker } from "./ui/date-picker";
-import { addTransaction } from "../_actions/add-transaction";
+import { upsertTransaction } from "../_actions/add-transaction";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -73,26 +73,34 @@ type FormSchema = z.infer<typeof formSchema>;
 interface UpsertTransactionDialogProps {
   isOpen: boolean;
   setIsOpen: (IsOpen: boolean) => void;
+  defaultValues?: FormSchema;
+  transactionId?: string;
 }
 
 const UpsertTransactionDialog = ({
   isOpen,
   setIsOpen,
+  defaultValues,
+  transactionId,
 }: UpsertTransactionDialogProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      amount: undefined,
-      category: TransactionCategory.FOOD,
-      paymentMethod: TransactionPaymentMethod.CASH,
-      date: new Date(),
-      type: TransactionType.EXPENSE,
+      name: defaultValues ? defaultValues.name : "",
+      amount: defaultValues ? defaultValues.amount : undefined,
+      category: defaultValues
+        ? defaultValues.category
+        : TransactionCategory.FOOD,
+      paymentMethod: defaultValues
+        ? defaultValues.paymentMethod
+        : TransactionPaymentMethod.CASH,
+      date: defaultValues ? defaultValues.date : new Date(),
+      type: defaultValues ? defaultValues.type : TransactionType.EXPENSE,
     },
   });
 
   const onSubmit = async (data: FormSchema) => {
-    await addTransaction(data)
+    await upsertTransaction({ ...data, id: transactionId })
       .then(() => {
         setIsOpen(false);
         form.reset();
@@ -101,6 +109,8 @@ const UpsertTransactionDialog = ({
         console.error("Error adding transaction:", error);
       });
   };
+
+  const isUpdate = Boolean(transactionId);
 
   return (
     <Dialog
@@ -115,7 +125,7 @@ const UpsertTransactionDialog = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
-            <h1>Adicionar Transação</h1>
+            {isUpdate ? "Editar transação" : "Adicionar transação"}
           </DialogTitle>
 
           <DialogDescription>
@@ -263,7 +273,9 @@ const UpsertTransactionDialog = ({
                   Cancelar
                 </Button>
               </DialogClose>
-              <Button type="submit">Adicionar</Button>
+              <Button type="submit">
+                {isUpdate ? "Atualizar" : "Adicionar"}
+              </Button>
             </DialogFooter>
           </form>
         </Form>
