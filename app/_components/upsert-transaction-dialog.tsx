@@ -64,7 +64,7 @@ const formSchema = z.object({
     required_error: "Selecione um método de pagamento",
   }),
   date: z.date({
-    required_error: "Selecione uma data",
+    message: "Selecione uma data",
   }),
 });
 
