@@ -7,12 +7,16 @@ import { redirect } from "next/navigation";
 import Navbar from "../_components/navbar";
 
 const TransactionsPage = async () => {
-  const transactions = await db.transaction.findMany({});
-
   const { userId } = await auth();
   if (!userId) {
     redirect("/login");
   }
+
+  const transactions = await db.transaction.findMany({
+    where: {
+      userID: userId,
+    },
+  });
 
   return (
     <>
