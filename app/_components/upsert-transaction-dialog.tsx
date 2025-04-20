@@ -40,7 +40,7 @@ import {
   TRANSACTION_TYPE_OPTIONS,
 } from "../_constants/transactions";
 import { DatePicker } from "./ui/date-picker";
-import { upsertTransaction } from "../_actions/add-transaction";
+import { upsertTransaction } from "../_actions/upsert-transaction";
 
 const formSchema = z.object({
   name: z.string().trim().min(1, {
@@ -85,17 +85,13 @@ const UpsertTransactionDialog = ({
 }: UpsertTransactionDialogProps) => {
   const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: defaultValues ? defaultValues.name : "",
-      amount: defaultValues ? defaultValues.amount : undefined,
-      category: defaultValues
-        ? defaultValues.category
-        : TransactionCategory.FOOD,
-      paymentMethod: defaultValues
-        ? defaultValues.paymentMethod
-        : TransactionPaymentMethod.CASH,
-      date: defaultValues ? defaultValues.date : new Date(),
-      type: defaultValues ? defaultValues.type : TransactionType.EXPENSE,
+    defaultValues: defaultValues ?? {
+      name: "",
+      amount: undefined,
+      category: TransactionCategory.FOOD,
+      paymentMethod: TransactionPaymentMethod.CASH,
+      date: new Date(),
+      type: TransactionType.EXPENSE,
     },
   });
 
