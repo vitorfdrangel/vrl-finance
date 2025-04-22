@@ -10,7 +10,7 @@ const mulish = Mulish({
 
 export const metadata: Metadata = {
   title: "VRL Finance",
-  description: "Controlhe de gastos e IA",
+  description: "Controlhe suas finanças com auxílio de IA",
 };
 
 export default function RootLayout({
