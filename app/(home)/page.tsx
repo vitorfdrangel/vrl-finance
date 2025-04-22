@@ -17,10 +17,12 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect("/login");
   }
 
+  const monthActually = new Date().getMonth() + 1;
+
   const monthIsInvalid = !month || !isMatch(month, "MM");
 
   if (monthIsInvalid) {
-    redirect("/?month=1");
+    redirect(`/?month=${monthActually}`);
   }
 
   return (
