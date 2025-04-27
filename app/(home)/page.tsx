@@ -8,6 +8,7 @@ import TransactionPieChart from "../_components/transactions-pie-chart";
 import GetDashboard from "../_data/get-dashboard";
 import { SlidersHorizontal } from "lucide-react";
 import ExpensesPerCategory from "./_components/expenses-per-category";
+import LastTransactions from "./_components/last-transactions";
 
 interface HomeProps {
   searchParams: {
@@ -58,7 +59,9 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
             </div>
           </div>
 
-          <div className="text-center">Aside</div>
+          <div className="text-center">
+            <LastTransactions lastTransactions={dashboard.lastTransactions} />
+          </div>
         </div>
       </div>
     </>

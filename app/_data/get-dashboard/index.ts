@@ -50,7 +50,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const transactionsTotal = Number(
     (
       await db.transaction.aggregate({
-        where,
+        where: { ...where, userID: userId },
         _sum: { amount: true },
       })
     )._sum.amount,
@@ -82,6 +82,12 @@ const GetDashboard = async (month: string, userId: string) => {
     ),
   }));
 
+  const lastTransactions = await db.transaction.findMany({
+    where: { ...where, userID: userId },
+    orderBy: { date: "desc" },
+    take: 10,
+  });
+
   return {
     depositsTotal,
     investmentsTotal,
@@ -89,6 +95,7 @@ const GetDashboard = async (month: string, userId: string) => {
     balance,
     typesPercentage,
     totalExpensePerCategory,
+    lastTransactions,
   };
 };
 
