@@ -6,7 +6,6 @@ import TimeSelect from "./_components/time-select";
 import { isMatch } from "date-fns";
 import TransactionPieChart from "../_components/transactions-pie-chart";
 import GetDashboard from "../_data/get-dashboard";
-import { SlidersHorizontal } from "lucide-react";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
 
@@ -22,12 +21,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
     redirect("/login");
   }
 
-  const currentMonth = new Date().getMonth() + 1;
-
   const monthIsInvalid = !month || !isMatch(month, "MM");
 
   if (monthIsInvalid) {
-    redirect(`/?month=${currentMonth}`);
+    redirect(`/?month=${new Date().getMonth() + 1}`);
   }
 
   const dashboard = await GetDashboard(month, userId);
@@ -41,7 +38,6 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <h1 className="text-2xl font-bold">Dashboard</h1>
 
           <div className="flex items-center gap-4">
-            <SlidersHorizontal />
             <TimeSelect />
           </div>
         </div>

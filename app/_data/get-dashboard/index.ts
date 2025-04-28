@@ -6,6 +6,7 @@ import { TotalExpensePerCategory, TransactionPercentagePerType } from "./types";
 
 const GetDashboard = async (month: string, userId: string) => {
   const where = {
+    userID: userId,
     date: {
       gte: new Date(`2025-${month}-01`),
       lt: new Date(`2025-${month}-31`),
@@ -15,7 +16,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const depositsTotal = Number(
     (
       await db.transaction.aggregate({
-        where: { ...where, type: "DEPOSIT", userID: userId },
+        where: { ...where, type: "DEPOSIT" },
         _sum: {
           amount: true,
         },
@@ -26,7 +27,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const investmentsTotal = Number(
     (
       await db.transaction.aggregate({
-        where: { ...where, type: "INVESTMENT", userID: userId },
+        where: { ...where, type: "INVESTMENT" },
         _sum: {
           amount: true,
         },
@@ -37,7 +38,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const expensesTotal = Number(
     (
       await db.transaction.aggregate({
-        where: { ...where, type: "EXPENSE", userID: userId },
+        where: { ...where, type: "EXPENSE" },
         _sum: {
           amount: true,
         },
@@ -50,7 +51,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const transactionsTotal = Number(
     (
       await db.transaction.aggregate({
-        where: { ...where, userID: userId },
+        where: { ...where },
         _sum: { amount: true },
       })
     )._sum.amount,
@@ -71,7 +72,7 @@ const GetDashboard = async (month: string, userId: string) => {
   const totalExpensePerCategory: TotalExpensePerCategory[] = (
     await db.transaction.groupBy({
       by: ["category"],
-      where: { ...where, type: TransactionType.EXPENSE, userID: userId },
+      where: { ...where, type: TransactionType.EXPENSE },
       _sum: { amount: true },
     })
   ).map((category) => ({
@@ -83,7 +84,7 @@ const GetDashboard = async (month: string, userId: string) => {
   }));
 
   const lastTransactions = await db.transaction.findMany({
-    where: { ...where, userID: userId },
+    where: { ...where },
     orderBy: { date: "desc" },
     take: 15,
   });
