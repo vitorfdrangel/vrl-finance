@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/app/_components/ui/button";
 import { CardContent, CardHeader, CardTitle } from "@/app/_components/ui/card";
 import { ScrollArea } from "@/app/_components/ui/scroll-area";
@@ -25,7 +27,7 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
   };
 
   return (
-    <ScrollArea className="h-full rounded-md border">
+    <ScrollArea className="h-[730px] rounded-md border">
       <CardHeader>
         <div className="flex items-center justify-between border-b pb-6">
           <CardTitle className="font-bold">Últimas Transações</CardTitle>
