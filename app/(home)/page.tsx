@@ -44,10 +44,10 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
 
         <div className="grid grid-cols-[2fr,1fr] gap-6">
           <div className="space-y-6">
-            <SummaryCards {...dashboard} />
+            <SummaryCards {...JSON.parse(JSON.stringify(dashboard))} />
 
             <div className="grid grid-cols-[1.35fr,2fr] grid-rows-1 gap-6">
-              <TransactionPieChart {...dashboard} />
+              <TransactionPieChart {...JSON.parse(JSON.stringify(dashboard))} />
 
               <ExpensesPerCategory
                 expensesPerCategory={dashboard.totalExpensePerCategory}
@@ -55,8 +55,12 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
             </div>
           </div>
 
-          <div className="text-center">
-            <LastTransactions lastTransactions={dashboard.lastTransactions} />
+          <div>
+            <LastTransactions
+              lastTransactions={JSON.parse(
+                JSON.stringify(dashboard.lastTransactions),
+              )}
+            />
           </div>
         </div>
       </div>
