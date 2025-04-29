@@ -18,7 +18,7 @@ const SummaryCard = ({
   return (
     <>
       <Card
-        className={`${size === "large" ? "bg-white/5" : ""} ${title === "Investido" ? "bg-white/5" : ""} `}
+        className={`${size === "large" ? "bg-white/5" : ""} ${title === "Receita" ? "bg-white/5" : ""} `}
       >
         <CardHeader className="flex-row items-baseline gap-4">
           {icon}

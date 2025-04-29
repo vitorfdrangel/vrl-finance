@@ -30,12 +30,6 @@ const SummaryCards = async ({
 
       <div className="grid grid-cols-[1.4fr,1fr,1fr] gap-6">
         <SummaryCard
-          title={"Investido"}
-          icon={<PiggyBankIcon size={16} />}
-          amount={investmentsTotal}
-        />
-
-        <SummaryCard
           title={"Receita"}
           icon={<TrendingUpIcon size={16} className="text-primary" />}
           amount={depositsTotal}
@@ -45,6 +39,12 @@ const SummaryCards = async ({
           title={"Despesas"}
           icon={<TrendingDownIcon size={16} className="text-red-500" />}
           amount={expensesTotal}
+        />
+
+        <SummaryCard
+          title={"Investido"}
+          icon={<PiggyBankIcon size={16} />}
+          amount={investmentsTotal}
         />
       </div>
     </div>
