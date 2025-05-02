@@ -17,9 +17,11 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
     switch (transactionType) {
       case TransactionType.DEPOSIT:
         return "text-primary";
+        break;
 
       case TransactionType.EXPENSE:
         return "text-red-500";
+        break;
 
       default:
         return "text-white";
@@ -32,53 +34,61 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
         <div className="flex items-center justify-between border-b pb-6">
           <CardTitle className="font-bold">Últimas Transações</CardTitle>
 
-          <Button
-            variant={"outline"}
-            className="rounded-full font-bold"
-            asChild
-          >
-            <Link href="/transactions">Ver mais</Link>
-          </Button>
+          {lastTransactions.length > 0 && (
+            <Button
+              variant={"outline"}
+              className="rounded-full font-bold"
+              asChild
+            >
+              <Link href="/transactions">Ver mais</Link>
+            </Button>
+          )}
         </div>
       </CardHeader>
 
       <CardContent className="space-y-6">
-        {lastTransactions.map((transaction) => (
-          <div
-            key={transaction.id}
-            className="flex items-center justify-between rounded-md"
-          >
-            <div className="flex items-center gap-4">
-              <div className="rounded-lg bg-white/[3%] p-3">
-                <Image
-                  src={`/${TRANSACTION_PAYMENT_METHOD_ICONS[transaction.paymentMethod]}`}
-                  width={20}
-                  height={20}
-                  alt={`${transaction.paymentMethod} icon`}
-                />
-              </div>
-
-              <div className="text-start">
-                <p className="font-bold">{transaction.name}</p>
-
-                <p className="text-sm text-muted-foreground/50">
-                  {new Date(transaction.date).toLocaleDateString("pt-BR", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </p>
-              </div>
-            </div>
-
-            <p
-              className={`text-sm font-bold ${getAmountColor(transaction.type)}`}
+        {lastTransactions.length > 0 ? (
+          lastTransactions.map((transaction) => (
+            <div
+              key={transaction.id}
+              className="flex items-center justify-between rounded-md"
             >
-              {transaction.type === TransactionType.DEPOSIT ? "+" : "-"}
-              {formatCurrency(Number(transaction.amount))}
-            </p>
-          </div>
-        ))}
+              <div className="flex items-center gap-4">
+                <div className="rounded-lg bg-white/[3%] p-3">
+                  <Image
+                    src={`/${TRANSACTION_PAYMENT_METHOD_ICONS[transaction.paymentMethod]}`}
+                    width={20}
+                    height={20}
+                    alt={`${transaction.paymentMethod} icon`}
+                  />
+                </div>
+
+                <div className="text-start">
+                  <p className="font-bold">{transaction.name}</p>
+
+                  <p className="text-sm text-muted-foreground/50">
+                    {new Date(transaction.date).toLocaleDateString("pt-BR", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </p>
+                </div>
+              </div>
+
+              <p
+                className={`text-sm font-bold ${getAmountColor(transaction.type)}`}
+              >
+                {transaction.type === TransactionType.DEPOSIT ? "+" : "-"}
+                {formatCurrency(Number(transaction.amount))}
+              </p>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-muted-foreground">
+            Nenhuma transação encontrada
+          </p>
+        )}
       </CardContent>
     </ScrollArea>
   );
