@@ -25,7 +25,7 @@ export const POST = async (request: Request) => {
   );
 
   switch (event.type) {
-    case "invoice.paid": {
+    case "invoice.payment_succeeded": {
       // Atualizar o usuário com o seu novo plano
       const { customer, subscription, subscription_details } =
         event.data.object;
