@@ -12,7 +12,7 @@ import {
 } from "./ui/tooltip";
 
 interface UserCanAddTransactionProps {
-  userCanAddTransaction: boolean;
+  userCanAddTransaction?: boolean;
 }
 
 const AddTransactionButton = ({
