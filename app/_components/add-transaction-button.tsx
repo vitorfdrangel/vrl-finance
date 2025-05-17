@@ -34,14 +34,14 @@ const AddTransactionButton = ({
             </Button>
           </TooltipTrigger>
 
-          <TooltipContent>
-            {!userCanAddTransaction && (
+          {!userCanAddTransaction && (
+            <TooltipContent>
               <div>
                 <p>Limite de transações atingido.</p>
                 <p>Assine o plano premium para mais.</p>
               </div>
-            )}
-          </TooltipContent>
+            </TooltipContent>
+          )}
         </Tooltip>
       </TooltipProvider>
 

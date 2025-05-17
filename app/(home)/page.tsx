@@ -1,4 +1,4 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Navbar from "../_components/navbar";
 import SummaryCards from "./_components/summary-cards";
@@ -8,6 +8,7 @@ import TransactionPieChart from "../_components/transactions-pie-chart";
 import GetDashboard from "../_data/get-dashboard";
 import ExpensesPerCategory from "./_components/expenses-per-category";
 import LastTransactions from "./_components/last-transactions";
+import AiReportButton from "./_components/ai-report-button";
 
 interface HomeProps {
   searchParams: {
@@ -29,6 +30,8 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
 
   const dashboard = await GetDashboard(month, userId);
 
+  const user = await clerkClient().users.getUser(userId!);
+
   return (
     <>
       <Navbar />
@@ -38,6 +41,12 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
           <h1 className="text-2xl font-bold">Dashboard</h1>
 
           <div className="flex items-center gap-4">
+            <AiReportButton
+              month={month}
+              hasPremiumPlan={
+                user.publicMetadata.subscriptionPlan === "premium"
+              }
+            />
             <TimeSelect />
           </div>
         </div>

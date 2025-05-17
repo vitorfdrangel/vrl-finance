@@ -1,4 +1,4 @@
-import { auth, clerkClient } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import Navbar from "../_components/navbar";
 import { redirect } from "next/navigation";
 import { Card, CardContent, CardHeader } from "../_components/ui/card";
@@ -7,6 +7,7 @@ import { Button } from "../_components/ui/button";
 import AcquirePlanButton from "./_components/acquire-plan-button";
 import { Badge } from "../_components/ui/badge";
 import { getCurrentMonthTransactions } from "../_data/get-current-month-transactions";
+import { getUserPlan } from "../_data/get-user-plan";
 
 const SubscriptionPage = async () => {
   const { userId } = await auth();
@@ -14,9 +15,7 @@ const SubscriptionPage = async () => {
     redirect("/login");
   }
 
-  const user = await clerkClient.users.getUser(userId);
-
-  const hasPremiumPlan = user.publicMetadata.subscriptionPlan === "premium";
+  const hasPremiumPlan = await getUserPlan();
 
   const currentMonthTransactions = await getCurrentMonthTransactions();
 
@@ -62,10 +61,10 @@ const SubscriptionPage = async () => {
 
               <Button
                 disabled
-                variant={"outline"}
+                variant={"ghost"}
                 className="mt-6 w-full rounded-full font-bold"
               >
-                Plano Atual
+                {hasPremiumPlan ? "" : "Plano atual"}
               </Button>
             </CardContent>
           </Card>
