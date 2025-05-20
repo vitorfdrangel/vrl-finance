@@ -46,7 +46,7 @@ const SubscriptionPage = async () => {
                 <p>
                   Apenas 10 transações por mês{" "}
                   <span
-                    className={`font-bold ${currentMonthTransactions === 10 ? "text-red-500" : "text-primary"}`}
+                    className={`font-bold ${currentMonthTransactions >= 10 ? "text-red-500" : "text-primary"}`}
                   >
                     {currentMonthTransactions}
                   </span>
