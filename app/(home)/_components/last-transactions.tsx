@@ -17,11 +17,9 @@ const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
     switch (transactionType) {
       case TransactionType.DEPOSIT:
         return "text-primary";
-        break;
 
       case TransactionType.EXPENSE:
         return "text-red-500";
-        break;
 
       default:
         return "text-white";
