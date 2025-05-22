@@ -19,6 +19,10 @@ const TransactionsPage = async () => {
     where: {
       userID: userId,
     },
+
+    orderBy: {
+      date: "desc",
+    },
   });
 
   const userCanAddTransaction = await canUserAddTransaction();
