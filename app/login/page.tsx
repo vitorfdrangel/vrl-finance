@@ -15,7 +15,7 @@ const LoginPage = async () => {
     <div className="grid h-full grid-cols-2">
       <div className="mx-auto flex h-full max-w-xl flex-col justify-center gap-2">
         <Image
-          src="/logo.svg"
+          src="/logo-finance.svg"
           alt="Logo"
           width={173}
           height={39}
