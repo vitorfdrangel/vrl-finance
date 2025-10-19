@@ -29,6 +29,7 @@ A plataforma permite **registrar, visualizar e analisar transações financeiras
 ✅ **Autenticação segura** com **Clerk**  
 ✅ **Assinaturas e planos premium** com **Stripe**  
 ✅ **Design moderno e responsivo** com **TailwindCSS**
+
 ✅ **Relatório e dicas sobre suas finanças com assistente IA** com **GROQ AI**
 
 ---
