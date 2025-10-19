@@ -1,5 +1,7 @@
 # 💼 VRL-Finance — SaaS de Gestão Financeira
 
+<img src="public\readme-login.png" alt="Logo Food" >
+
 O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal e empresarial**, desenvolvido com **Next.js**, **TailwindCSS**, **MongoDB**, **Prisma**, **Clerk** e **Stripe**.  
 A plataforma permite **registrar, visualizar e analisar transações financeiras** — categorizadas como **despesas, depósitos e investimentos** — oferecendo uma **dashboard intuitiva e visual**, com gráficos e indicadores financeiros em tempo real.
 
@@ -26,6 +28,7 @@ A plataforma permite **registrar, visualizar e analisar transações financeiras
 ✅ **Últimas transações** — histórico das movimentações mais recentes  
 ✅ **Autenticação segura** com **Clerk**  
 ✅ **Assinaturas e planos premium** com **Stripe**  
+✅ **Relatório e dicas sobre suas finanças com assistente IA** com **GROQ AI**
 ✅ **Design moderno e responsivo** com **TailwindCSS**
 
 ---
@@ -39,23 +42,6 @@ A **dashboard** do VRL-Finance apresenta:
 - 🗂️ **Tabela com as últimas transações realizadas**
 - 🏷️ **Análise de gastos por categoria**
 - 🗓️ Filtro de **período/mês** para controle detalhado das finanças
-
----
-
-## 🧱 Estrutura do Projeto
-
-VRL-Finance/
-├── prisma/ # Schema e migrações do Prisma
-├── src/
-│ ├── app/ # Páginas e rotas (Next.js App Router)
-│ ├── components/ # Componentes reutilizáveis (UI, gráficos, formulários)
-│ ├── lib/ # Configurações (Stripe, Clerk, Prisma, etc.)
-│ ├── styles/ # Estilos globais e configurações do Tailwind
-│ └── utils/ # Funções auxiliares e helpers
-├── .env.example # Exemplo de variáveis de ambiente
-├── package.json
-├── tailwind.config.js
-└── README.md
 
 ---
 
@@ -85,6 +71,7 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="sua_clerk_public_key"
 CLERK_SECRET_KEY="sua_clerk_secret_key"
 STRIPE_SECRET_KEY="sua_stripe_secret_key"
 STRIPE_WEBHOOK_SECRET="seu_stripe_webhook_secret"
+GROQ_API_KEY="sua_groq_api_key"
 ```
 
 4️⃣ Rodar as migrações
@@ -113,13 +100,9 @@ O projeto será executado em:
 | `npx prisma studio` | Abre o painel visual do Prisma |
 
 🪪 Licença
-
 Este projeto está licenciado sob a MIT License — veja o arquivo LICENSE
 para mais detalhes.
 
-🌐 Contato
+## Acesse o projeto clicando no link abaixo:
 
-📧 Autor: [Seu Nome]
-🔗 GitHub: github.com/seu-usuario
-
-💼 LinkedIn: linkedin.com/in/seu-perfil
+[vrl-finance](https://vrl-finance.vercel.app/)
