@@ -2,7 +2,7 @@
 
 <img src="public\readme-login.png" alt="Logo Food" >
 
-O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal e empresarial**, desenvolvido com **Next.js**, **TailwindCSS**, **MongoDB**, **Prisma**, **Clerk** e **Stripe**.  
+O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal**, desenvolvido com **Next.js**, **TailwindCSS**, **MongoDB**, **Prisma**, **Clerk** e **Stripe**.  
 A plataforma permite **registrar, visualizar e analisar transações financeiras** — categorizadas como **despesas, depósitos e investimentos** — oferecendo uma **dashboard intuitiva e visual**, com gráficos e indicadores financeiros em tempo real.
 
 ---
@@ -28,8 +28,8 @@ A plataforma permite **registrar, visualizar e analisar transações financeiras
 ✅ **Últimas transações** — histórico das movimentações mais recentes  
 ✅ **Autenticação segura** com **Clerk**  
 ✅ **Assinaturas e planos premium** com **Stripe**  
-✅ **Relatório e dicas sobre suas finanças com assistente IA** com **GROQ AI**
 ✅ **Design moderno e responsivo** com **TailwindCSS**
+✅ **Relatório e dicas sobre suas finanças com assistente IA** com **GROQ AI**
 
 ---
 
@@ -103,6 +103,6 @@ O projeto será executado em:
 Este projeto está licenciado sob a MIT License — veja o arquivo LICENSE
 para mais detalhes.
 
-## Acesse o projeto clicando no link abaixo:
+## Acesse o Saas clicando no link abaixo:
 
 [vrl-finance](https://vrl-finance.vercel.app/)
