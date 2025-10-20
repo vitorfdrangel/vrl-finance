@@ -2,7 +2,7 @@
 
 <img src="public\readme-login.png" alt="Logo Food" >
 
-O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal**, desenvolvido com **Next.js**, **TailwindCSS**, **MongoDB**, **Prisma**, **Clerk** e **Stripe**.  
+O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal**, desenvolvido com **Next.js**, **TailwindCSS**, **PostgreSQL**, **Prisma**, **Clerk** e **Stripe**.  
 A plataforma permite **registrar, visualizar e analisar transações financeiras** — categorizadas como **despesas, depósitos e investimentos** — oferecendo uma **dashboard intuitiva e visual**, com gráficos e indicadores financeiros em tempo real.
 
 ---
@@ -11,7 +11,7 @@ A plataforma permite **registrar, visualizar e analisar transações financeiras
 
 - ⚛️ **[Next.js](https://nextjs.org/)** — Framework React para construção de aplicações web escaláveis
 - 🎨 **[TailwindCSS](https://tailwindcss.com/)** — Framework CSS utilitário para design moderno e responsivo
-- 🧩 **[MongoDB](https://www.mongodb.com/)** — Banco de dados NoSQL para armazenamento das transações
+- 🧩 **[PostgreSQL](https://www.postgresql.org/)** — Banco de dados SQL para armazenamento das transações
 - 🔗 **[Prisma](https://www.prisma.io/)** — ORM para comunicação eficiente com o banco de dados
 - 🔐 **[Clerk](https://clerk.dev/)** — Autenticação e gerenciamento de usuários (login, registro, perfis, etc.)
 - 💳 **[Stripe](https://stripe.com/)** — Integração de pagamentos e planos de assinatura
