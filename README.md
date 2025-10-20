@@ -100,10 +100,8 @@ O projeto será executado em:
 | `npm run start` | Executa o app em modo de produção |
 | `npx prisma studio` | Abre o painel visual do Prisma |
 
-🪪 Licença
+🪪 Licença:
 Este projeto está licenciado sob a MIT License — veja o arquivo LICENSE
 para mais detalhes.
 
-## Acesse o Saas clicando no link abaixo:
-
-[vrl-finance](https://vrl-finance.vercel.app/)
+## Acesse o Saas clicando no link: [vrl-finance](https://vrl-finance.vercel.app/)
