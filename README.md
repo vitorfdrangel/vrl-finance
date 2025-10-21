@@ -2,7 +2,7 @@
 
 <img src="public\readme-login.png" alt="Logo Food" >
 
-O **VRL-Finance** é um **SaaS moderno de gestão financeira pessoal**, desenvolvido com **Next.js**, **TailwindCSS**, **PostgreSQL**, **Prisma**, **Clerk** e **Stripe**.  
+O **VRL-Finance** é um **SaaS moderno de gestão financeira com insights de IA**, desenvolvido com **Next.js**, **TailwindCSS**, **PostgreSQL**, **Prisma**, **Clerk** e **Stripe**.  
 A plataforma permite **registrar, visualizar e analisar transações financeiras** — categorizadas como **despesas, depósitos e investimentos** — oferecendo uma **dashboard intuitiva e visual**, com gráficos e indicadores financeiros em tempo real.
 
 ---
